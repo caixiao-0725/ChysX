@@ -24,6 +24,9 @@ include_directories(${TARGET_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${TARGET_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/foundation)
 
+
+add_subdirectory(src)
+
 # Optional: Add tests if enabled
 if(CHYSX_BUILD_TESTS)
     add_subdirectory(tests)

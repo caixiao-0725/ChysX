@@ -177,12 +177,12 @@ CX_CUDA_CALLABLE CX_FORCE_INLINE double CxCos(double a)
 //! \brief compute sine and cosine at the same time
 CX_CUDA_CALLABLE CX_FORCE_INLINE void CxSinCos(const CxF32 a, CxF32& sin, CxF32& cos)
 {
-#if CX_CUDA_COMPILER && __CUDA_ARCH__ >= 350
-	__sincosf(a, &sin, &cos);
-#else
+//#if CX_CUDA_COMPILER && __CUDA_ARCH__ >= 350
+//	__sincosf(a, &sin, &cos);
+//#else
 	sin = CxSin(a);
 	cos = CxCos(a);
-#endif
+//#endif
 }
 
 //! \brief compute sine and cosine at the same time
