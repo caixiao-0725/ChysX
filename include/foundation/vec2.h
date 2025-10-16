@@ -2,7 +2,7 @@
 #define VEC2_H
 
 #include "macros.h"
-#include "math.h"
+#include "cx_math.h"
 #include "constructor.h"
 
 namespace CX_NAMESPACE

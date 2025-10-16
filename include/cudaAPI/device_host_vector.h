@@ -60,7 +60,7 @@ namespace CX_NAMESPACE
         }
 
         // Copy host to device memory
-		void ReadToDevice() const{
+		void ReadToDevice() {
             if(deviceVector.size() != size){
                 deviceVector.resize(size);
             }
@@ -68,7 +68,7 @@ namespace CX_NAMESPACE
         }
 
 		// Copy device to host memory
-		void ReadToHost() const{
+		void ReadToHost() {
             if(hostVector.size() != size){
                 hostVector.resize(size);
             }

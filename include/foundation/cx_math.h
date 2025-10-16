@@ -10,7 +10,6 @@
 #pragma warning(disable : 4985) // 'symbol name': attributes not present on previous declaration
 #endif
 #include <math.h>
-#include "corecrt_math.h"
 
 #if CX_VC
 #pragma warning(pop)

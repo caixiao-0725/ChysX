@@ -156,6 +156,16 @@ family shortcuts
 #define CX_ARM_FAMILY (CX_ARM || CX_A64)
 #define CX_P64_FAMILY (CX_X64 || CX_A64) // shortcut for 64-bit architectures
 
+#if CX_LINUX && CX_CLANG && !CX_CUDA_COMPILER
+#define CX_COMPILE_TIME_ASSERT(exp) \
+_Pragma(" clang diagnostic push") \
+_Pragma(" clang diagnostic ignored \"-Wc++98-compat\"") \
+static_assert(exp, "") \
+_Pragma(" clang diagnostic pop")
+#else
+#define CX_COMPILE_TIME_ASSERT(exp) static_assert(exp, "")
+#endif
+
 
 /*********************************************************************************
 ****************************    Compiling Numbers     ****************************
