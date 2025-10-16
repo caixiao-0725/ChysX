@@ -25,6 +25,8 @@ include_directories(${TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${TARGET_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/foundation)
 
 
+add_compile_definitions(ASSET_PATH="${CMAKE_CURRENT_SOURCE_DIR}/assets/")
+
 add_subdirectory(src)
 
 # Optional: Add tests if enabled
@@ -39,6 +41,4 @@ endif()
 
 # Install headers
 file(GLOB_RECURSE FOUNDATION_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/foundation/*.h")
-
-
-source_group("Header Files\\foundation" FILES ${FOUNDATION_HEADERS})
+add_custom_target(foundation SOURCES ${FOUNDATION_HEADERS})
