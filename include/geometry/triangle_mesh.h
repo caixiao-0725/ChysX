@@ -10,9 +10,12 @@ namespace CX_NAMESPACE
 {
     class SingleTriangleMesh
     {
+        CX_NONCOPYABLE(SingleTriangleMesh)
     public:
         SingleTriangleMesh();
         ~SingleTriangleMesh();
+        // Enable move semantics so containers can reallocate by moving
+        CX_MOVABLE(SingleTriangleMesh)
 
         void SetName(const std::string& name);
         std::string GetName() const { return name; }

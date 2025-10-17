@@ -23,12 +23,32 @@ namespace CX_NAMESPACE
 		size_t size = 0;
 
     public:
+        // Copy-swap implementation
+        // Swap function of this class
+        // Should be updated if you add new member variables
+        friend void swap(DeviceHostVector<T>& m1, DeviceHostVector<T>& m2) noexcept
+        {
+            std::swap(m1.deviceVector, m2.deviceVector); // Swap resource pointer to avoid multi-release
+            std::swap(m1.size, m2.size);
+            std::swap(m1.hostVector, m2.hostVector);
+        };
+
 
         // Default constructor
         DeviceHostVector() = default;
         
         // Free memory and reset members
 		~DeviceHostVector() {}
+
+        // Custom move constructor
+        DeviceHostVector(DeviceHostVector&& other) noexcept { swap(*this, other); }
+
+        // Custom move assignment operator
+        DeviceHostVector& operator=(DeviceHostVector&& other) noexcept
+        {
+            swap(*this, other);
+            return *this;
+        }
 
         // Clear member without release memory pointer
 		void Reset();

@@ -1,0 +1,35 @@
+cmake_minimum_required(VERSION 3.18)
+
+# Target name
+set(TARGET_NAME simulator-tests)
+
+# Source files
+file(GLOB TEST_CPP_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+file(GLOB TEST_CUDA_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/*.cu")
+
+# Create the executable target
+add_executable(${TARGET_NAME} ${TEST_CPP_SOURCES} ${TEST_CUDA_SOURCES})
+
+# Include directories
+target_include_directories(${TARGET_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/include/simulator)
+target_include_directories(${TARGET_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/include/geometry)
+target_include_directories(${TARGET_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/include/cudaAPI)
+target_include_directories(${TARGET_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/include/foundation)
+
+# Link directories
+target_link_libraries(${TARGET_NAME} PRIVATE simulator)
+target_link_libraries(${TARGET_NAME} PRIVATE geometry)
+target_link_libraries(${TARGET_NAME} PRIVATE cudaAPI)
+
+# MSVC settings
+if(MSVC)
+    target_compile_options(${TARGET_NAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:/MP /W3 /WX /utf-8>)
+endif()
+
+# CMake properties
+set_target_properties(${TARGET_NAME} PROPERTIES
+    CUDA_RESOLVE_DEVICE_SYMBOLS ON
+    CUDA_SEPARABLE_COMPILATION ON
+    CUDA_ARCHITECTURES "75"
+    FOLDER "Tests"
+)
