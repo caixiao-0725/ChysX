@@ -1,2 +1,3 @@
 add_subdirectory(foundation)
 add_subdirectory(cudaAPI)
+add_subdirectory(geometry)

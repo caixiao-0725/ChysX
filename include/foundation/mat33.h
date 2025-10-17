@@ -340,7 +340,7 @@ class CxMat33T
 	}
 
 	// Data, see above for format!
-
+	
 	CxVec3T<Type>	column0, column1, column2; // the three base vectors
 };
 

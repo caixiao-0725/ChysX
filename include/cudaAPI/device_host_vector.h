@@ -3,6 +3,7 @@
 #include "array_1d.h"
 #include <vector>
 #include "helper_cuda.h"
+#include "cuda_runtime.h"
 
 namespace CX_NAMESPACE
 {
@@ -34,9 +35,11 @@ namespace CX_NAMESPACE
 
         // Get host memory vector
 		std::vector<T> &GetHost() { return hostVector; }
+        const std::vector<T> &GetHost() const { return hostVector; }
         
         // Get device memory vector
         cx::Array<T> &GetDevice() { return deviceVector; }
+        const cx::Array<T> &GetDevice() const { return deviceVector; }
 
         // Get size
 		size_t GetSize() const { return size; }
