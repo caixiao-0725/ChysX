@@ -6,6 +6,7 @@
 #include "foundation/aabb.h"
 #include "device_host_vector.h"
 #include "foundation/vec4.h"
+#include <vector>
 
 namespace CX_NAMESPACE
 {
@@ -19,23 +20,20 @@ namespace CX_NAMESPACE
         // Enable move semantics
         CX_MOVABLE(ABDModel)
 
-        void initializeCPU();
+        void initialize();
 
 		void calculateAABB();
 		void calculateBarycentricCoords();
-        void initializeGPU();
 
     private:
         CxVec3T<CxReal> m_transform = CxVec3T<CxReal>(0,0,0);
         CxVec3T<CxReal> m_size = CxVec3T<CxReal>(1,1,1);
 
-        ABDDofs m_x;
-        ABDDofs m_x_rest;
-        DeviceHostVector<CxVec4T<CxReal>> m_barycentric_coords;
+        CxVec3x4T<CxReal> m_x;
+        CxVec3x4T<CxReal> m_x_rest;
+        std::vector<CxVec4T<CxReal>> m_barycentric_coords;
 
         CxAABBT<CxReal> m_box;
-
-        CxReal m_density;
     };
 }
 #endif

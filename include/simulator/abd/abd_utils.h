@@ -9,9 +9,6 @@
 
 namespace CX_NAMESPACE
 {
-    struct ABDDofs {
-        CxVec3T<CxReal> v[4];
-    };
 
     CxReal computeElementSpace(const CxVec3T<CxReal>& v0, const CxVec3T<CxReal>& v1, const CxVec3T<CxReal>& v2,const CxVec3T<CxReal>& v3); // area or volume
 

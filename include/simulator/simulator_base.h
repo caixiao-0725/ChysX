@@ -17,6 +17,7 @@ class SimulatorBase {
         CxReal time_elapsed = 0;
         std::string output_directory = "simulation_outputs";
         bool line_search = true;
+        bool use_gpu = false;
     
         virtual void initialize(){};
         virtual void calculate_dt(){};

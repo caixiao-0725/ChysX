@@ -43,7 +43,7 @@ namespace CX_NAMESPACE
         auto &model = m_model.back();
         std::string cubePath = get_asset_path() + "cube/cube.obj";
         model.ReadFromObjFile(cubePath);
-        model.initializeCPU();
+        model.initialize();
     }
 
 }

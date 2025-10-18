@@ -355,6 +355,19 @@ CX_CUDA_CALLABLE static CX_FORCE_INLINE CxVec3T<Type> operator*(Type f, const Cx
 typedef CxVec3T<float>	CxVec3;
 typedef CxVec3T<double>	CxVec3d;
 
+template<class Type>
+class CxVec3x4T {
+    public:
+    CxVec3T<Type> v[4];
+    CxVec3x4T() : v{CxVec3T<Type>(0,0,0), CxVec3T<Type>(0,0,0), CxVec3T<Type>(0,0,0), CxVec3T<Type>(0,0,0)} {}
+    CxVec3x4T(const CxVec3T<Type>& v0, const CxVec3T<Type>& v1, const CxVec3T<Type>& v2, const CxVec3T<Type>& v3) : v{v0, v1, v2, v3} {}
+    CxVec3x4T(const CxVec3x4T& other) : v{other.v[0], other.v[1], other.v[2], other.v[3]} {}
+    CxVec3x4T& operator=(const CxVec3x4T& other) { v = other.v; return *this; }
+};
+
+typedef CxVec3x4T<float>	CxVec3x4;
+typedef CxVec3x4T<double>	CxVec3x4d;
+
 //! A padded version of CxVec3, to safely load its data using SIMD
 class CxVec3Padded : public CxVec3
 {

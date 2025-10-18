@@ -4,7 +4,7 @@ namespace CX_NAMESPACE
 {
 
 
-	void ABDModel::initializeCPU()
+	void ABDModel::initialize()
 	{
 		calculateAABB();
 		calculateBarycentricCoords();
@@ -64,15 +64,10 @@ namespace CX_NAMESPACE
 
 		// Get non-const references for the function call
 		auto& hostVertices = GetVertices().GetHost();
-		auto& hostBaryCoords = m_barycentric_coords.GetHost();
 
-		computeBarycentricCoordinate(m_x.v[0], m_x.v[1], m_x.v[2], m_x.v[3], hostVertices, hostBaryCoords);
+		computeBarycentricCoordinate(m_x.v[0], m_x.v[1], m_x.v[2], m_x.v[3], hostVertices, m_barycentric_coords);
 
 	}
 
 
-	void ABDModel::initializeGPU()
-	{
-		// Placeholder for GPU initialization logic
-	}
 }
